@@ -5,16 +5,10 @@ A Docker container with the [Coturn TURN server](https://github.com/coturn/cotur
 * hub.docker.com (Docker image): [boldt/coturn](https://hub.docker.com/r/boldt/coturn/)
 * github.com (Repo): [boldt/turn-server-docker-image](https://github.com/boldt/turn-server-docker-image)
 
-# Build the container
-
-```
-sudo docker build -t boldt/coturn .
-```
-
 # Run the container
 
-```
-sudo docker run \
+```bash
+docker run \
   -d \
   -p 3478:3478 \
   -p 3478:3478/udp \
@@ -36,11 +30,11 @@ This image supports some environment variables:
 
 An example:
 
-```
+```bash
 # This makes sure, that the min- and max-port is the same for all environment variables
 export MIN_PORT=50000
 export MAX_PORT=50010
-sudo docker run \
+docker run \
   -d \
   -p 3478:3478 \
   -p 3478:3478/udp \
@@ -59,8 +53,8 @@ sudo docker run \
 
 Store the cert under `/opt/cert.pem` and the key under `/opt/pkey.pem` and mount them as volumes:
 
-```
-sudo docker run \
+```bash
+docker run \
   -d \
   -p 3478:3478 \
   -p 3478:3478/udp \
@@ -74,9 +68,29 @@ sudo docker run \
 
 ## Debugging
 
+```bash
+docker logs coturn
+docker exec -it coturn /bin/bash
 ```
-sudo docker logs coturn
-sudo docker exec -it coturn /bin/bash
+
+# Build and push the container
+
+(For own documentation)
+
+```bash
+# Clone
+git clone git clone git@github.com:boldt/turn-server-docker-image.git
+
+# Build
+docker build -t boldt/coturn .
+
+# Tag
+VERSION=0.0.2
+docker tag boldt/coturn boldt/coturn:$VERSION
+
+# Push
+docker push boldt/coturn:latest
+docker push boldt/coturn:$VERSION
 ```
 
 # Thanks
