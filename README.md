@@ -2,7 +2,7 @@
 
 A Docker container with the [Coturn TURN server](https://github.com/coturn/coturn).
 
-* hub.docker.com (Docker image): [boldt/coturn](https://hub.docker.com/r/boldt/coturn/)
+* hub.docker.com (Docker image): [vuhoangha/coturn](https://hub.docker.com/r/vuhoangha/coturn/)
 * github.com (Repo): [boldt/turn-server-docker-image](https://github.com/boldt/turn-server-docker-image)
 
 # Run the container
@@ -15,7 +15,7 @@ docker run \
   -p 65435-65535:65435-65535/udp \
   --restart=always \
   --name coturn \
-  boldt/coturn
+  vuhoangha/coturn
 ```
 
 ## Environment variables
@@ -46,7 +46,7 @@ docker run \
   -e MAX_PORT=${MAX_PORT} \
   --restart=always \
   --name coturn \
-  boldt/coturn
+  vuhoangha/coturn
 ```
 
 ## Certificates
@@ -63,7 +63,7 @@ docker run \
   --volume /opt/pkey.pem:/etc/ssl/turn_server_pkey.pem \
   --restart=always \
   --name coturn \
-  boldt/coturn
+  vuhoangha/coturn
 ```
 
 ## Debugging
@@ -82,15 +82,15 @@ docker exec -it coturn /bin/bash
 git clone git clone git@github.com:boldt/turn-server-docker-image.git
 
 # Build
-docker build -t boldt/coturn .
+docker build -t vuhoangha/coturn .
 
 # Tag
 VERSION=0.0.2
-docker tag boldt/coturn boldt/coturn:$VERSION
+docker tag vuhoangha/coturn vuhoangha/coturn:$VERSION
 
 # Push
-docker push boldt/coturn:latest
-docker push boldt/coturn:$VERSION
+docker push vuhoangha/coturn:latest
+docker push vuhoangha/coturn:$VERSION
 ```
 
 # Thanks
